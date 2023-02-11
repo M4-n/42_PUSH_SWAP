@@ -6,7 +6,7 @@
 /*   By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 12:04:09 by mmaythaw          #+#    #+#             */
-/*   Updated: 2023/02/11 12:53:55 by mmaythaw         ###   ########.fr       */
+/*   Updated: 2023/02/11 14:59:04 by mmaythaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ int	is_dup(char **arr, int flag)
 	i = flag;
 	while (arr[++i])
 	{
-		j = i;
-		if (ft_atoi(arr[i]) == ft_atoi(arr[j]))
-			return (1);
+		j = i ;
+		while (arr[++j])
+			if (ft_atoi(arr[i]) == ft_atoi(arr[j]))
+				return (1);
 	}
 	return (0);
 }

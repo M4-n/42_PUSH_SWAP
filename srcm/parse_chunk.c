@@ -6,7 +6,7 @@
 /*   By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 14:56:48 by mmaythaw          #+#    #+#             */
-/*   Updated: 2023/02/11 12:54:09 by mmaythaw         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:28:32 by mmaythaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ void	parse_chunk(t_stack **a, char **arr, int len, int start)
 	if (len > 100)
 		chunk = CHUNKFIVE;
 	range = len / chunk;
-	end = range;
+	end = 1;
 	chunknum = 1;
 	while (chunknum <= chunk && range > 0)
 	{
-		if (chunknum == chunk)
+		while (end > len - 1)
+			end--;
+		if (chunknum == chunk && end < len - 1)
 			while (arr[end + 1])
 				end++;
 		assign_cnum(a, ft_atoi(arr[start]), ft_atoi(arr[end]), chunknum);

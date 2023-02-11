@@ -6,7 +6,7 @@
 /*   By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:18:32 by mmaythaw          #+#    #+#             */
-/*   Updated: 2023/02/11 13:19:02 by mmaythaw         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:22:48 by mmaythaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	format_check(char **arr, int flag)
 		j = -1;
 		while (arr[i][++j])
 		{
-			if ((j == 0 && (arr[i][j] != '-' && ft_isdigit(arr[i][j])))
-				|| (j != 0 && !ft_isdigit(arr[i][j])))
+			if ((j == 0 && (arr[i][j] != '-' && !ft_isdigit(arr[i][j])))
+			|| (j != 0 && !ft_isdigit(arr[i][j])))
 				format_error(arr, flag);
 			if (j == 0 && arr[i][j] == '-' && ft_strlen(arr[i]) == 1)
 				format_error(arr, flag);
@@ -90,6 +90,6 @@ int	main(int argc, char **argv)
 			get_stack(arr, -1);
 	}
 	else if (argc > 2 && format_check(argv, 0))
-		get_stack(arr, 0);
+		get_stack(argv, 0);
 	return (0);
 }
