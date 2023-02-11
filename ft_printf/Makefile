@@ -6,7 +6,7 @@
 #    By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/05 08:54:59 by mmaythaw          #+#    #+#              #
-#    Updated: 2023/02/11 13:05:45 by mmaythaw         ###   ########.fr        #
+#    Updated: 2023/02/11 15:42:55 by mmaythaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ test: all
 
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files in ft_printf...$(DEFAULT)\n"
-	@if [ -d "libft" ]; then make clean -C libft; fi
+	@if [ -d "libft" ]; then make fclean -C libft; fi
 	@$(RM) -r $(OBJM_DIR)
 	@$(RM) -r $(OBJB_DIR)
 
