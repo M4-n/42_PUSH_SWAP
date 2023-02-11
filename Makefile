@@ -6,7 +6,7 @@
 #    By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/11 12:01:05 by mmaythaw          #+#    #+#              #
-#    Updated: 2023/02/11 13:55:34 by mmaythaw         ###   ########.fr        #
+#    Updated: 2023/02/11 15:44:03 by mmaythaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ create_dirs:
 
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files in push_swap...$(DEFAULT)\n"
-	@if [ -d "ft_printf" ]; then make clean -C ft_printf; fi
+	@if [ -d "ft_printf" ]; then make fclean -C ft_printf; fi
 	@$(RM) -r $(OBJM_DIR)
 	@$(RM) -r $(OBJB_DIR)
 
