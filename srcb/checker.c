@@ -34,9 +34,7 @@ void	check_stack(t_stack **a, char *line)
 			&& ft_strncmp(line, "rr\n", 3) && ft_strncmp(line, "rrr\n", 4)
 			&& ft_strncmp(line, "ss\n", 3))
 			stack_error(a, line, -1);
-		ft_printf("test\n");
 		check_result(a, &b, line);
-		ft_printf("test\n");
 		line = get_next_line(0);
 	}
 	if (is_sorted(*a) && !b)
