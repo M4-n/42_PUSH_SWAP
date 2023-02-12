@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../ft_printf/ft_printf_bonus.h"
-# include "../ft_printf/libft/libft.h"
 
 # define INT_MAX 2147483647
 # define CHUNKONE 10
