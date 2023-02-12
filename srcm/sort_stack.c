@@ -105,8 +105,6 @@ void	sort_stack(t_stack **a, int len)
 		sort_three(a);
 	else if (len <= 5)
 		sort_five(a, len);
-	else if (len <= 100)
-		sort_onehund(a, len, 0);
 	else
-		sort_fivehund(a, len);
+		hundred_sort(a, len);
 }

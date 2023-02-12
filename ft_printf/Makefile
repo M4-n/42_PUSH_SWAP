@@ -97,7 +97,7 @@ test: all
 
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files in ft_printf...$(DEFAULT)\n"
-	@if [ -d "libft" ]; then make fclean -C libft; fi
+	@if [ -d "libft" ]; then make clean -C libft; fi
 	@$(RM) -r $(OBJM_DIR)
 	@$(RM) -r $(OBJB_DIR)
 

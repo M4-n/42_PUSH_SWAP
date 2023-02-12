@@ -36,7 +36,7 @@ void	parse_chunk(t_stack **a, char **arr, int len, int start)
 	if (len > 100)
 		chunk = CHUNKFIVE;
 	range = len / chunk;
-	end = 1;
+	end = range;
 	chunknum = 1;
 	while (chunknum <= chunk && range > 0)
 	{

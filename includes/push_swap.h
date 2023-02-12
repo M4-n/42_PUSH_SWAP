@@ -13,6 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../ft_printf/ft_printf_bonus.h"
+# include "../ft_printf/libft/libft.h"
 
 # define INT_MAX 2147483647
 # define CHUNKONE 10
@@ -42,8 +43,9 @@ void	stack_error(void);
 void	quick_sort_arr(char **arr, int start, int end, int i);
 void	parse_chunk(t_stack **a, char **arr, int len, int start);
 void	sort_stack(t_stack **a, int len);
-void	sort_onehund(t_stack **a, int len_a, int chunknum);
-void	sort_fivehund(t_stack **a, int len_a);
+void	hundred_sort(t_stack **a, int len_a);
+void	sort_onehund(t_stack **a, t_stack **b, int len_a, int chunknum);
+void	sort_fivehund(t_stack **a, t_stack **b, int len_a, int chunknum);
 void	place(t_stack **a, t_stack **b, t_stack *marker, int len_a);
 void	same_rotate(t_stack **a, t_stack **b, int da, int db);
 void	same_rrotate(t_stack **a, t_stack **b, int da, int db);

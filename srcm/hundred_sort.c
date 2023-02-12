@@ -12,12 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	change_stack(t_stack **temp, t_stack **bottom)
-{
-	*temp = (*temp)->next;
-	*bottom = (*bottom)->prev;
-}
-
 void	push_back(t_stack **a, t_stack **b)
 {
 	int	db;
@@ -36,13 +30,11 @@ void	push_back(t_stack **a, t_stack **b)
 	}
 }
 
-void	sort_onehund(t_stack **a, int len_a, int chunknum)
+void	sort_onehund(t_stack **a, t_stack **b, int len_a, int chunknum)
 {
-	t_stack	*b;
 	t_stack	*temp;
 	t_stack	*bottom;
 
-	b = NULL;
 	while (++chunknum <= CHUNKONE && *a)
 	{
 		temp = *a;
@@ -50,29 +42,28 @@ void	sort_onehund(t_stack **a, int len_a, int chunknum)
 		while (len_a > 0 && temp && bottom)
 		{
 			if (temp->chunk != chunknum && bottom->chunk != chunknum)
-				change_stack(&temp, &bottom);
+			{
+				temp = temp->next;
+				bottom = bottom->prev;
+			}
 			else
 			{
 				if (temp->chunk == chunknum)
-					place(a, &b, temp, len_a--);
+					place(a, b, temp, len_a--);
 				else if (bottom->chunk == chunknum)
-					place(a, &b, bottom, len_a--);
+					place(a, b, bottom, len_a--);
 				temp = *a;
 				bottom = find_bottom(a);
 			}
 		}
 	}
-	push_back(a, &b);
+	//push_back(a, &b);
 }
 
-void	sort_fivehund(t_stack **a, int len_a)
+void	sort_fivehund(t_stack **a, t_stack **b, int len_a, int chunknum)
 {
-	t_stack	*b;
 	t_stack	*temp;
-	int		chunknum;
 
-	b = NULL;
-	chunknum = 0;
 	while (++chunknum <= CHUNKFIVE && *a)
 	{
 		temp = *a;
@@ -82,11 +73,22 @@ void	sort_fivehund(t_stack **a, int len_a)
 				temp = temp->next;
 			else
 			{
-				place(a, &b, temp, len_a);
+				place(a, b, temp, len_a--);
 				temp = *a;
-				len_a--;
 			}
 		}
 	}
+	//push_back(a, &b);
+}
+
+void	hundred_sort(t_stack **a, int len_a)
+{
+	t_stack	*b;
+
+	b = NULL;
+	if (len_a <= 100)
+		sort_onehund(a, &b, len_a, 0);
+	else
+		sort_fivehund(a, &b, len_a, 0);
 	push_back(a, &b);
 }

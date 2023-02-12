@@ -25,6 +25,8 @@ WHITE = \033[0;97m
 # VARIABLES
 
 NAME = push_swap
+HEADER = includes/push_swap.h
+B_HEADER = includes/checker.h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -61,7 +63,7 @@ SRCB_PCT = $(shell expr 100 \* $(SRCB_COUNT) / $(SRCB_COUNT_TOT))
 all: $(NAME)
 
 $(NAME): create_dirs compile_printf $(OBJM)
-	@$(CC) $(CFLAGS) -o $@ $(FT_PRINTF) $(OBJM)
+	@$(CC) $(CFLAGS) -o $@ $(OBJM) $(FT_PRINTF)
 	@$(PRINTF) "\r%100s\r$(GREEN)$@ is up to date!$(DEFAULT)\n"
 
 $(OBJM_DIR)/%.o: $(SRCM_DIR)/%.c
@@ -70,7 +72,7 @@ $(OBJM_DIR)/%.o: $(SRCM_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: create_dirs compile_printf $(OBJB)
-	@$(CC) $(CFLAGS) -o checker $(FT_PRINTF) $(OBJB)
+	@$(CC) $(CFLAGS) -o checker $(OBJB) $(FT_PRINTF)
 	@$(PRINTF) "\r%100s\r$(GREEN)checker is up to date!$(DEFAULT)\n"
 
 $(OBJB_DIR)/%.o: $(SRCB_DIR)/%.c
