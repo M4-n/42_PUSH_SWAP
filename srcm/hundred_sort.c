@@ -57,7 +57,6 @@ void	sort_onehund(t_stack **a, t_stack **b, int len_a, int chunknum)
 			}
 		}
 	}
-	//push_back(a, &b);
 }
 
 void	sort_fivehund(t_stack **a, t_stack **b, int len_a, int chunknum)
@@ -78,7 +77,6 @@ void	sort_fivehund(t_stack **a, t_stack **b, int len_a, int chunknum)
 			}
 		}
 	}
-	//push_back(a, &b);
 }
 
 void	hundred_sort(t_stack **a, int len_a)
