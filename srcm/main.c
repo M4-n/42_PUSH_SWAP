@@ -6,7 +6,7 @@
 /*   By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:18:32 by mmaythaw          #+#    #+#             */
-/*   Updated: 2023/02/11 15:22:48 by mmaythaw         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:02:48 by mmaythaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	format_check(char **arr, int flag)
 	int	j;
 
 	i = flag;
+	if (!arr[flag + 1][0])
+		format_error(arr,flag);
 	while (arr[++i])
 	{
 		j = -1;
@@ -75,11 +77,15 @@ int	format_check(char **arr, int flag)
 int	main(int argc, char **argv)
 {
 	char	**arr;
+	int		i;
 
 	arr = 0;
+	i = 0;
 	if (argc == 2 && !argv[1][0])
 		return (0);
-	if (argc == 2 && ft_isspace(argv[1][0]))
+	while (argc == 2 && ft_isspace(argv[1][i]))
+		i++;
+	if (!argv[1][i])
 		format_error(0, 0);
 	if (argc == 2)
 	{
