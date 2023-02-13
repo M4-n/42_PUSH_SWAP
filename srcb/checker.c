@@ -6,7 +6,7 @@
 /*   By: mmaythaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 12:46:59 by mmaythaw          #+#    #+#             */
-/*   Updated: 2023/02/13 13:05:22 by mmaythaw         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:36:01 by mmaythaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	ft_isspace(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\f' || c == '\r' || c == '\v');
+	if (c == ' ')
+		return (1);
+	else if (c == '\r' || c == '\f' || c == '\v'
+		|| c == '\t' || c == '\n')
+		return (2);
+	return (0);
 }
 
 void	check_stack(t_stack **a, char *line)
@@ -78,7 +82,7 @@ int	format_check(char **arr, int flag)
 	int	j;
 
 	i = flag;
-	if (!arr[flag + 1][0])
+	if (!arr[flag + 1] || !arr[flag + 1][0])
 		format_error(arr, flag);
 	while (arr[++i])
 	{
@@ -105,18 +109,19 @@ int	main(int argc, char **argv)
 	int		i;
 
 	arr = 0;
-	i = 0;
+	i = -1;
 	if (argc == 2 && !argv[1][0])
 		return (0);
-	while (argc == 2 && ft_isspace(argv[1][i]))
-		i++;
-	if (!argv[1][i])
+	while (argc == 2 && ft_isspace(argv[1][++i]))
+		if (ft_isspace(argv[1][i]) == 2)
+			format_error(0, 0);
+	if (argc == 2 && !argv[1][i])
 		format_error(0, 0);
 	if (argc == 2)
 	{
 		arr = ft_split(argv[1], ' ');
 		if (!arr)
-			return (0);
+			format_check(0, 0);
 		if (format_check(arr, -1))
 			get_stack(arr, -1);
 	}
